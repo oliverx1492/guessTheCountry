@@ -63,13 +63,13 @@ const Game = () => {
     const onSubmit = (event) => {
 
         event.preventDefault()
-        console.log("Input: ", input)
-        console.log("Ziel: ", target.name)
+       // console.log("Input: ", input)
+       // console.log("Ziel: ", target.name)
 
 
 
         const guessContinent = countries.find(country => country.name == input)
-        console.log(guessContinent)
+        // console.log(guessContinent)
 
         if (!liste.includes(input)) {
             setInfo("Falsche Eingabe")
