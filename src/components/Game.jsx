@@ -24,6 +24,7 @@ const Game = () => {
 
     const [info, setInfo] = useState()
 
+    const [sug, setSug] = useState()
 
     const [won, setWon] = useState(false)
 
@@ -38,8 +39,25 @@ const Game = () => {
 
 
     useEffect(() => {
+        
         startGameAll()
     }, [])
+
+
+
+
+    useEffect( ()=> {
+
+        if(input) {
+            const suggestion = liste.find(value => value.startsWith(input))
+        
+            setSug(suggestion)
+
+
+            
+        }
+        
+    },[input] )
 
 
 
@@ -56,15 +74,16 @@ const Game = () => {
     }
 
     const onChangeHandler = (event) => {
+        setInfo()
         setInput(event.target.value)
+        
     }
 
 
     const onSubmit = (event) => {
 
         event.preventDefault()
-       // console.log("Input: ", input)
-       // console.log("Ziel: ", target.name)
+        setSug()
 
 
 
@@ -117,44 +136,55 @@ const Game = () => {
     }
 
     return (
-        <div className="base" style={{ backgroundColor: color }}>
+        <div className="text-center bg-blue-100 h-screen">
+
+            
+
+
+            <div className=" flex flex-col items-center h-screen transition-all duration-500" style={{ backgroundColor: color }}>
             <Link to="/howTo"><p>Wie spielt man</p></Link>
-            <h1>GuessTheCountry</h1>
-            {message && <p>{message}. Versuch</p>}
-            <div className="game">
 
-                {!won && <form onSubmit={onSubmit}>
-                    <input disabled={won}
+               <p className="mb-4 text-7xl font-extrabold p-2">Guess The Country</p>  
+                
+                {message && <p>{message}. Versuch</p>}
+                <div className=" p-2 w-1/2 flex flex-col">
 
-                        onChange={onChangeHandler}
-                        value={input}
+                    {!won && <form onSubmit={onSubmit}>
 
-                        type="text" />
-                        
-                    {info && <div className="info"><p>Tipp: {info}</p></div>}
-                </form>}
+                        <input disabled={won}
+                            className="block w-full p-6 w-100 text-gray-900 border border-gray-300 rounded-lg bg-gray-50"
+                            onChange={onChangeHandler}
+                            value={input}
+
+                            type="text" />
+
+                            {sug && <p className="p-4">Meinst du    : {sug}</p>}
+
+                        {info && <div className="p-6"><p>Tipp: {info}</p></div>}
+                    </form>}
 
 
 
 
-            </div>
-
-            {won && <div className="winModal">
-                <div className="win">
-                    <h2>Das gesuchte Land war {target.name}</h2> 
-                    <h4>Gewonnen in {message} Versuchen</h4>
-                    <h5 className="restart" onClick={restart}>Nochmal spielen?</h5>
                 </div>
+
+                {won && <div className="flex justify-center m-4">
+                    <div className="bg-amber-400 p-4 rounded-lg">
+                        <h2 className="text-2xl">Gratulation! Das gesuchte Land war {target.name}</h2>
+                        <h4 className="text-lg">Gewonnen in {message} Versuchen</h4>
+                        <h5 className="text-md cursor-pointer hover:scale-110 transition-all" onClick={restart}>Nochmal spielen?</h5>
+                    </div>
+                </div>
+                }
+
+
+
+                {guess && guess.map((item, index) => (
+                    <p key={index}>{item}</p>
+                ))}
+
+
             </div>
-            }
-
-
-
-            {guess && guess.map((item, index) => (
-                <p key={index}>{item}</p>
-            ))}
-
-
         </div>
     )
 }
