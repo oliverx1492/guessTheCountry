@@ -136,9 +136,9 @@ const Game = () => {
     }
 
     return (
-        <div className="text-center bg-blue-100 h-screen md:h-full">
+        <div className="text-center bg-blue-100 " >
 
-            <div className=" flex flex-col items-center h-full transition-all duration-500" style={{ backgroundColor: color }}>
+            <div className=" flex flex-col items-center transition-all duration-500 h-max md:h-max min-h-screen" style={{ backgroundColor: color }}>
             <Link to="/howTo"><p>Wie spielt man</p></Link>
 
                <p className="mb-4 text-7xl font-extrabold p-2">Guess The Country</p>  
