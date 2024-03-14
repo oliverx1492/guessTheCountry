@@ -7,7 +7,7 @@ const How = () => {
 
 
     return (
-        <div className="text-center bg-blue-100 h-100 md:h-screen ">
+        <div className="text-center bg-blue-100 h-max md:h-max min-h-screen">
             <h4><Link to="/">GuessTheCountry</Link></h4>
             <h1 className="mb-4 text-7xl font-extrabold p-2">Wie spielt man</h1>
 
@@ -30,7 +30,7 @@ const How = () => {
                     <br />
                     <div className="text-center p-2 rounded-lg w-1/2" style={{backgroundColor:"rgb(209, 234, 118)"}}>Falsches Land, Nachbarland, richtiger Kontinent</div>
                     <br />
-                    <div className="text-center p-2 rounded-lg w-1/2" style={{backgroundColor:"rgb(73, 225, 162)"}}>Richtiges Land</div>
+                    <div className="text-center p-2 rounded-lg w-1/2" style={{backgroundColor:"rgb(73, 225, 162)"}}>Richtiges Land, Spiel gewonnen, herzlichen Glückwunsch</div>
                     <br />
                     
                     <p className="text-md cursor-pointer hover:scale-110 transition-all"> <Link  to="/game">Starte jetzt das Spiel</Link></p>
