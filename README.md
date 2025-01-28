@@ -28,3 +28,6 @@ Use the feedback to narrow down your guesses and find the correct country.
 - (Optional) A basic understanding of geography to improve your chances.
 
 link to the game: https://guessthecountry.onrender.com/
+
+## Used Technologies
+JavaScript, React
